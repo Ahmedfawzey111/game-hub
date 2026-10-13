@@ -1,0 +1,323 @@
+:root {
+  /* Backgrounds */
+  --bg: #050505;
+  --armor-dark: #14161A;
+  --armor-light: #2A2D33;
+  --armor-highlight: #5A5F66;
+  /* Brand reds and glows */
+  --stripe-red: #E8321E;
+  --primary-red: #E31B23;
+  --deep-red: #B3121A;
+  --glow-orange: #FF5A1F;
+  --spark-amber: #FFB02E;
+  /* text */
+  --text: #FFFFFF;
+  --text-muted: #B8B8B8;
+  --main-duration: 0.3s;
+  --font-heading: "Chakra Petch", "Segoe UI", sans-serif;
+  --font-body: "Barlow", "Segoe UI", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+}
+
+
+.container {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+
+.container .nav-bar ul{
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.container .nav-bar ul a {
+    display: flex;
+    text-decoration: none;
+    color: var(--text);
+    font-family: var(--font-heading);
+    transition: var(--main-duration) ease-in-out;
+    padding: 5px;
+}
+
+.container .nav-bar ul a:hover {
+    color: var(--deep-red);
+    transform: translateY(-3px);
+    background-color: var(--text);
+    border-radius: 20px;
+}
+
+.container .nav-bar .fa-wifi {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: var(--text);
+}
+
+.container .nav-bar {
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .container .nav-bar {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .container .nav-bar .fa-wifi {
+        display: block;
+        color: var(--deep-red);
+    }
+
+    .container .nav-bar ul {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+        min-width: 160px;
+        background-color: var(--armor-highlight);
+        border-radius: 20px;
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        padding: 0;
+        transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+    }
+
+    .container .nav-bar ul.active {
+        max-height: 400px;
+        opacity: 1;
+        padding: 10px 0;
+    }
+
+    .container .nav-bar ul a {
+        padding: 5px 20px;
+    }
+}
+
+.container .sp-p {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 6px;
+    gap: 10px;
+    font-size: 1.2rem;
+    background-color: var(--text);
+    border-radius: 25px;
+    transition: 1s ease-in-out;
+}
+
+.container .sp-p:hover {
+    background-color: var(--armor-light);
+}
+
+.container .sp-p .fa-dragon {
+    color: var(--primary-red);
+    display: block;
+    transition: 1s ease-in-out;
+}
+
+.container .sp-p .fa-dragon:hover {
+    color: var(--bg);
+}
+
+
+.container .sp-p .head-p {
+    color: var(--armor-highlight);
+    margin-top: -2px;
+}
+
+/*landing*/
+
+.landing {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    color: #fff;
+}
+
+.landing::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.35));
+    z-index: -1;
+}
+
+.landing .container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 80px 20px 40px;
+}
+
+.landing .back-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+.landing .back-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.landing .land {
+    max-width: 520px;
+}
+
+.landing .sp-land {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+
+.landing .spical-heading {
+    font-size: 96px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.landing .container .cards {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.landing .container .text:hover {
+    transform: translateY(-3px);
+    background-color: var(--deep-red);
+}
+
+.landing .cards .text {
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    transition: var(--main-duration);
+}
+
+.landing .cards .text h3 {
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.landing .cards .text p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ddd;
+}
+
+@media (max-width: 768px) {
+    .landing .spical-heading {
+        font-size: 60px;
+    }
+
+    .landing .cards {
+        grid-template-columns: 1fr;
+    }
+}
+/*footer*/
+
+footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+footer .container .icon {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 20px;
+}
+
+footer .container .icon a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--deep-red);
+    font-size: 20px;
+}
+
+.icon i {
+    padding: 1px;
+}
+
+.icon  .fa-tiktok:hover {
+     color: #fff;
+    text-shadow: -2px -2px 0 #25F4EE, 2px 2px 0 #FE2C55;
+}
+
+.icon .fa-instagram:hover {
+    background: linear-gradient(45deg,
+     #f09433,
+     #e6683c,
+     #dc2743,
+     #cc2366,
+     #bc1888);
+    color: #fff;
+    border-radius: 30px;
+}
+
+.icon .fa-discord:hover {
+    background: var(--text);
+    color: #5865F2;
+    border-radius: 30% ;
+}
+
+.copywrite {
+     text-align: center;
+    padding: 20px 10px;
+    background: var(--armor-dark);
+    border-top: 1px solid var(--deep-red);
+}
+
+.copywrite p {
+    margin: 0;
+    font-size: 14px;
+    color: #aaa;
+    letter-spacing: 0.5px;
+}
+
+.copywrite span {
+    color: #fff;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.copywrite span:hover {
+    color: var(--primary-red);
+}
